@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const Categories = () => {
   const categories = [
     {
@@ -178,6 +180,9 @@ const Categories = () => {
     },
   ];
 
+  const [showAll, setShowAll] = useState(false);
+  const visibleCategories = showAll ? categories : categories.slice(0, 6);
+
   return (
     <div className="w-full max-w-7xl mx-auto px-4 py-12">
       {/* Section Header with Gradient */}
@@ -195,7 +200,7 @@ const Categories = () => {
 
       {/* Colorful Grid Layout */}
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6">
-        {categories.map((category) => (
+        {visibleCategories.map((category) => (
           <div
             key={category.id}
             className="group relative overflow-hidden rounded-2xl cursor-pointer transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
@@ -246,6 +251,17 @@ const Categories = () => {
           </div>
         ))}
       </div>
+
+      {categories.length > 6 && (
+        <div className="text-center mt-8">
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="px-6 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-all duration-300 font-medium"
+          >
+            {showAll ? "Show Less ↑" : "Show More ↓"}
+          </button>
+        </div>
+      )}
 
       {/* Alternative Card Style - Option 2 */}
       <div className="mt-16">

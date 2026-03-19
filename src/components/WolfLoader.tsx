@@ -26,7 +26,7 @@ const WolfLoader: React.FC = () => {
       </div>
 
       {/* Brand name */}
-      <div className="absolute bottom-8 text-white/50 text-xs tracking-widest">
+      <div className="absolute bottom-8 text-white/50 text-md font-bold tracking-widest">
         NEXT LEVEL OF FASHION
       </div>
     </div>
